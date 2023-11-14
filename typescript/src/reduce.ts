@@ -4,3 +4,10 @@ export const reduceHugeList = () => {
     return [...acc, cur + index];
   }, []);
 }
+
+export const reduceHugeListMutable = () => {
+  new Array(ITERATIONS).fill(0).reduce((acc, cur, index) => {
+    acc[index] = index;
+    return acc;
+  }, []);
+}

@@ -9,11 +9,20 @@ class ReduceTest {
     val reduce = Reduce()
 
     @Test
-    fun `should return the good old greeting`() {
+    fun `should reduce inefficiently using list concatenation`() {
         val duration = measureNanoTime {
             reduce.reduceHugeList()
         } / 1000000.0
-        println("Ran for $duration ms")
+        println("Concatenation ran for $duration ms")
+        assertTrue(duration < 6000.0)
+    }
+
+    @Test
+    fun `should reduce more efficiently using list mutation`() {
+        val duration = measureNanoTime {
+            reduce.reduceHugeMutableList()
+        } / 1000000.0
+        println("Mutation ran for $duration ms")
         assertTrue(duration < 6000.0)
     }
 

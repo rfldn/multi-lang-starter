@@ -1,4 +1,4 @@
-import { reduceHugeList } from "../src/reduce";
+import { reduceHugeList, reduceHugeListMutable } from '../src/reduce';
 
 describe("test perf reduce", () => {
   it("should run fast enough", () => {
@@ -6,7 +6,15 @@ describe("test perf reduce", () => {
     reduceHugeList();
     const end = performance.now();
     const duration = end - start;
-    console.log(`Ran for ${duration} ms`);
+    console.log(`Spread ran for ${duration} ms`);
+    expect(duration).toBeLessThan(6000);
+  });
+  it("should run fast enough", () => {
+    const start = performance.now();
+    reduceHugeListMutable();
+    const end = performance.now();
+    const duration = end - start;
+    console.log(`Mutation ran for ${duration} ms`);
     expect(duration).toBeLessThan(6000);
   });
 });

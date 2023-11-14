@@ -11,4 +11,11 @@ class Reduce {
             acc.plus(index)
         }
     }
+
+    fun reduceHugeMutableList() {
+        List(ITERATIONS) { 0 }.foldIndexed(mutableListOf<Int>())  { index, acc, _ ->
+            acc.add(index)
+            acc
+        }
+    }
 }
