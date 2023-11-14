@@ -1,3 +1,9 @@
+kotlin.sourceSets.main {
+    dependencies {
+        implementation("org.jetbrains.kotlinx:kotlinx-collections-immutable:0.3.6")
+    }
+}
+
 plugins {
     kotlin("jvm") version "1.9.10"
     application

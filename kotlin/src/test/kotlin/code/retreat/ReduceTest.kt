@@ -26,4 +26,13 @@ class ReduceTest {
         assertTrue(duration < 6000.0)
     }
 
+    @Test
+    fun `should reduce quite efficiently using actual immutable (persistent) lists`() {
+        val duration = measureNanoTime {
+            reduce.reduceHugeImmutableList()
+        } / 1000000.0
+        println("Immutable concatenation ran for $duration ms")
+        assertTrue(duration < 6000.0)
+    }
+
 }
