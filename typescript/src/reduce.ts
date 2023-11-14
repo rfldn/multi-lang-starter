@@ -11,3 +11,9 @@ export const reduceHugeListMutable = () => {
     return acc;
   }, []);
 }
+
+export const reduceHugeListConcat = () => {
+  new Array(ITERATIONS).fill(0).reduce((acc, cur, index) => {
+    return acc.concat([index]);
+  }, []);
+}
