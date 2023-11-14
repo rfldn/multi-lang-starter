@@ -1,5 +1,7 @@
 import { reduceHugeList, reduceHugeListConcat, reduceHugeListMutable } from '../src/reduce';
 
+const TIMEOUT = 6000
+
 describe("test perf reduce", () => {
   it("should run fast enough", () => {
     const start = performance.now();
@@ -7,7 +9,7 @@ describe("test perf reduce", () => {
     const end = performance.now();
     const duration = end - start;
     console.log(`Spread ran for ${duration} ms`);
-    expect(duration).toBeLessThan(6000);
+    expect(duration).toBeLessThan(TIMEOUT);
   });
   it("should run fast enough", () => {
     const start = performance.now();
@@ -15,7 +17,7 @@ describe("test perf reduce", () => {
     const end = performance.now();
     const duration = end - start;
     console.log(`Mutation ran for ${duration} ms`);
-    expect(duration).toBeLessThan(6000);
+    expect(duration).toBeLessThan(TIMEOUT);
   });
   it("should run somewhat ok", () => {
     const start = performance.now();
@@ -23,6 +25,6 @@ describe("test perf reduce", () => {
     const end = performance.now();
     const duration = end - start;
     console.log(`Concatenation ran for ${duration} ms`);
-    expect(duration).toBeLessThan(6000);
+    expect(duration).toBeLessThan(TIMEOUT);
   });
 });

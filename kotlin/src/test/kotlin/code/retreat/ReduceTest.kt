@@ -7,6 +7,7 @@ import kotlin.system.measureNanoTime
 class ReduceTest {
 
     val reduce = Reduce()
+    val timeout = 6000.0
 
     @Test
     fun `should reduce inefficiently using list concatenation`() {
@@ -14,7 +15,7 @@ class ReduceTest {
             reduce.reduceHugeList()
         } / 1000000.0
         println("Concatenation ran for $duration ms")
-        assertTrue(duration < 6000.0)
+        assertTrue(duration < timeout)
     }
 
     @Test
@@ -23,7 +24,7 @@ class ReduceTest {
             reduce.reduceHugeMutableList()
         } / 1000000.0
         println("Mutation ran for $duration ms")
-        assertTrue(duration < 6000.0)
+        assertTrue(duration < timeout)
     }
 
     @Test
@@ -32,7 +33,7 @@ class ReduceTest {
             reduce.reduceHugeImmutableList()
         } / 1000000.0
         println("Immutable concatenation ran for $duration ms")
-        assertTrue(duration < 6000.0)
+        assertTrue(duration < timeout)
     }
 
 }
